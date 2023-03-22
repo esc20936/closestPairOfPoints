@@ -189,3 +189,17 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024",endCo
   background: rgba(255, 255, 255, 0.20);
   border: 1px solid rgba(255, 255, 255, 0.28);
 }
+
+@font-face {
+  font-family: 'Gotham-Black';
+  src: url('./assets/Fonts/Gotham-Black.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gotham-Medium';
+  src: url('./assets/Fonts/GothamMedium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

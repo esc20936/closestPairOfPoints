@@ -1,5 +1,8 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { generateRandomPositions } from '../Utils/utils';
+import { useDispatch } from 'react-redux';
+import { setDataArray } from '../store/dataSlice';
 
 export class Experience{
     
@@ -18,11 +21,10 @@ export class Experience{
             100
         );
 
-        this.setCameraPosition(0, 0, 2);
+        this.setCameraPosition(0, 0, 5);
         this.scene.add(this.camera);
         this.arrayOfSpheres = [];
-        this.addSpheres();
-
+  
         
         this.renderer = new THREE.WebGLRenderer({
             canvas: this.canvas,
@@ -72,7 +74,7 @@ export class Experience{
         this.camera.position.z = z;
     }
 
-    addSpheres(){
+    addSpheres(arrayOfCoords){
         if(this.arrayOfSpheres.length > 0){
             this.arrayOfSpheres.forEach(sphere => {
                 this.scene.remove(sphere);
@@ -81,12 +83,12 @@ export class Experience{
 
         for(let i = 0; i < 250; i++){
             const sphere = new THREE.Mesh(
-                new THREE.SphereGeometry(0.1, 32, 32),
+                new THREE.SphereGeometry(0.05, 32, 32),
                 new THREE.MeshPhongMaterial({ color: 0xffffff })
             );
-            sphere.position.x = (Math.random() - 0.5) * 10;
-            sphere.position.y = (Math.random() - 0.5) * 10;
-            sphere.position.z = (Math.random() - 0.5) * 10;
+            sphere.position.x = arrayOfCoords ? arrayOfCoords[i].x : (Math.random() - 0.5) * 10;
+            sphere.position.y = arrayOfCoords ? arrayOfCoords[i].y : (Math.random() - 0.5) * 10;
+            sphere.position.z = arrayOfCoords ? arrayOfCoords[i].z : (Math.random() - 0.5) * 10;
             this.arrayOfSpheres.push(sphere);
             this.scene.add(sphere);
         }
