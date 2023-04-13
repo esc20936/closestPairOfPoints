@@ -3,8 +3,11 @@ const memo = new Map();
 function dist(a, b) {
     const key = `${a.x},${a.y},${a.z}|${b.x},${b.y},${b.z}`;
     const alternateKey = `${b.x},${b.y},${b.z}|${a.x},${a.y},${a.z}`;
-    if (memo.has(key) || memo.has(alternateKey)) {
+    if (memo.has(key)) {
         return memo.get(key);
+    }
+    if (memo.has(alternateKey)) {
+        return memo.get(alternateKey);
     }
     const distance = Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2 + (a.z - b.z) ** 2);
     memo.set(key, distance);
