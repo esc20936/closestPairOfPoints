@@ -2,7 +2,8 @@ const memo = new Map();
 
 function dist(a, b) {
     const key = `${a.x},${a.y},${a.z}|${b.x},${b.y},${b.z}`;
-    if (memo.has(key)) {
+    const alternateKey = `${b.x},${b.y},${b.z}|${a.x},${a.y},${a.z}`;
+    if (memo.has(key) || memo.has(alternateKey)) {
         return memo.get(key);
     }
     const distance = Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2 + (a.z - b.z) ** 2);
