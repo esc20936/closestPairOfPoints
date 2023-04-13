@@ -10,7 +10,7 @@ const generateRandomPositions = () =>{
         y = Math.round(y * 1000) / 1000
         z = Math.round(z * 1000) / 1000
 
-      listOfCoords.push({x, y, z})
+      listOfCoords.push({x, y, z,name:`sphere_${i}`})
     }
     return listOfCoords
 

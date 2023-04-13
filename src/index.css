@@ -145,7 +145,7 @@ a {
 .center::before,
 .center::after {
   content: '';
-  left: 50%;
+  left: 45%;
   position: absolute;
   filter: blur(45px);
   transform: translateZ(0);

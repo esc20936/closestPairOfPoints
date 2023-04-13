@@ -6,6 +6,7 @@ import { Experience } from './Experience/Experience'
 import { generateRandomPositions } from './Utils/utils'
 import { useDispatch, useSelector } from 'react-redux'
 import { setDataArray } from './store/dataSlice'
+import { closestPairOfPointsDNC } from './Utils/DivideNConquer'
 // import './App.css'
 let experienceObj = null
 function App() {
@@ -31,11 +32,12 @@ function App() {
   };
 
   const handleDynamicProgramming = () => {
-    alert("Dynamic programming")
+    
   }
 
   const handleDivideAndConquer = () => {
-    alert("Divide and conquer")
+    let a =closestPairOfPointsDNC(dataArray.dataArray, dataArray.dataArray.length)
+    alert(`The closest pair of points has a distance of ${a}`)
   }
 
 
@@ -67,7 +69,6 @@ function App() {
                   </thead>
                   <tbody>
                       { dataArray.dataArray.map((sphere, index) => {
-                        console.log(sphere)
                         return (
                           <tr >
                           <td className="border px-4 py-2">{index}</td>
